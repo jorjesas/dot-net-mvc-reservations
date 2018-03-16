@@ -7,7 +7,7 @@ using System.Net.Http.Formatting;
 using System.Web;
 using System.Web.Http;
 
-namespace AngularJSAuthentication.ResourceServer.App_Start
+namespace Reservations.ResourceServer.App_Start
 {
     public static class WebApiConfig
     {

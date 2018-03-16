@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Http;
 
-namespace AngularJSAuthentication.ResourceServer.Controllers
+namespace Reservations.ResourceServer.Controllers
 {
     [Authorize]
     [RoutePrefix("api/protected")]

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularJSAuthentication.API.Models.Reservations
+namespace Reservations.API.Models.Reservations
 {
     public class Guest
     {

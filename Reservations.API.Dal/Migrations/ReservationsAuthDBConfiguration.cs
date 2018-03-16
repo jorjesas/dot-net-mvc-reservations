@@ -1,20 +1,21 @@
-namespace AngularJSAuthentication.API.Migrations
+namespace Reservations.API.Dal.Migrations
 {
-    using AngularJSAuthentication.API.Entities;
+    using Reservations.API.Common;
+    using Reservations.API.Entities;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<AngularJSAuthentication.API.AuthContext>
+    public sealed class ReservationsAuthDBConfiguration : DbMigrationsConfiguration<Reservations.API.AuthContext>
     {
-        public Configuration()
+        public ReservationsAuthDBConfiguration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(AngularJSAuthentication.API.AuthContext context)
+        protected override void Seed(Reservations.API.AuthContext context)
         {
             if (context.Clients.Count() > 0)
             {

@@ -1,11 +1,11 @@
-﻿using AngularJSAuthentication.API.Models;
+﻿using Reservations.API.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace AngularJSAuthentication.API.Entities
+namespace Reservations.API.Entities
 {
     public class Client
     {

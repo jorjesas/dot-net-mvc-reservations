@@ -1,5 +1,5 @@
-﻿using AngularJSAuthentication.API.Models;
-using AngularJSAuthentication.API.Results;
+﻿using Reservations.API.Models;
+using Reservations.API.Results;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 
-namespace AngularJSAuthentication.API.Controllers
+namespace Reservations.API.Controllers
 {
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController

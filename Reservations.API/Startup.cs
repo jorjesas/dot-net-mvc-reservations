@@ -1,4 +1,4 @@
-﻿using AngularJSAuthentication.API.Providers;
+﻿using Reservations.API.Providers;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
@@ -10,10 +10,11 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using Reservations.API.Dal.Contexts;
 
-[assembly: OwinStartup(typeof(AngularJSAuthentication.API.Startup))]
+[assembly: OwinStartup(typeof(Reservations.API.Startup))]
 
-namespace AngularJSAuthentication.API
+namespace Reservations.API
 {
     public class Startup
     {
@@ -30,7 +31,9 @@ namespace AngularJSAuthentication.API
             WebApiConfig.Register(config);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AuthContext, AngularJSAuthentication.API.Migrations.Configuration>());
+
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AuthContext, Reservations.API.Dal.Migrations.ReservationsAuthDBConfiguration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ReservationsContext, Reservations.API.Dal.Migrations.ReservationsDataDBConfiguration>());
 
         }
 

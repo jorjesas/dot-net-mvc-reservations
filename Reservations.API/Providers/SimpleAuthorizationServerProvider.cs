@@ -1,4 +1,4 @@
-﻿using AngularJSAuthentication.API.Entities;
+﻿using Reservations.API.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
@@ -8,8 +8,9 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using Reservations.API.Common;
 
-namespace AngularJSAuthentication.API.Providers
+namespace Reservations.API.Providers
 {
     public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {

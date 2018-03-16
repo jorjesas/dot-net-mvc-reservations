@@ -1,4 +1,4 @@
-﻿using AngularJSAuthentication.ResourceServer.App_Start;
+﻿using Reservations.ResourceServer.App_Start;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
@@ -8,8 +8,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 
-[assembly: OwinStartup(typeof(AngularJSAuthentication.ResourceServer.Startup))]
-namespace AngularJSAuthentication.ResourceServer
+[assembly: OwinStartup(typeof(Reservations.ResourceServer.Startup))]
+namespace Reservations.ResourceServer
 {
     public class Startup
     {

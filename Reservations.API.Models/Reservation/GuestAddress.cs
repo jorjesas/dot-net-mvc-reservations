@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularJSAuthentication.API.Models.Reservations
+namespace Reservations.API.Models.Reservations
 {
     public class GuestAddress
     {
-        [Key]
+        [ForeignKey("Guest")]
         public int GuestAddressId { get; set; }
         [Required]
         public string Address1 { get; set; }

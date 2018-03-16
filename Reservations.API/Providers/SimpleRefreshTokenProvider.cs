@@ -1,4 +1,4 @@
-﻿using AngularJSAuthentication.API.Entities;
+﻿using Reservations.API.Entities;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Infrastructure;
 using System;
@@ -7,8 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using Reservations.API.Common;
 
-namespace AngularJSAuthentication.API.Providers
+namespace Reservations.API.Providers
 {
     public class SimpleRefreshTokenProvider : IAuthenticationTokenProvider
     {
