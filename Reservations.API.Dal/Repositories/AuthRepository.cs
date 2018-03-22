@@ -9,6 +9,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using Reservations.API.Dal.Contexts;
 
 namespace Reservations.API
 {

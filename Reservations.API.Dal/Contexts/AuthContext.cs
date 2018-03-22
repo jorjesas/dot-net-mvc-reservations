@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace Reservations.API
+namespace Reservations.API.Dal.Contexts
 {
     public class AuthContext : IdentityDbContext<IdentityUser>
     {

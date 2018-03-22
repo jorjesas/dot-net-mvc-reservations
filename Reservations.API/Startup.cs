@@ -32,8 +32,8 @@ namespace Reservations.API
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
 
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AuthContext, Reservations.API.Dal.Migrations.ReservationsAuthDBConfiguration>());
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ReservationsContext, Reservations.API.Dal.Migrations.ReservationsDataDBConfiguration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AuthContext, Reservations.API.Dal.Migrations.AuthMigrations.Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ReservationsContext, Reservations.API.Dal.Migrations.ReservationDBMigrations.Configuration>());
 
         }
 

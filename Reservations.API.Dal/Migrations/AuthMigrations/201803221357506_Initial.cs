@@ -1,16 +1,12 @@
-namespace Reservations.API.Dal.Migrations
+namespace Reservations.API.Dal.Migrations.AuthMigrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddAuthTables : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
-            DropForeignKey("dbo.Reservations", "GuestId", "dbo.Guests");
-            DropForeignKey("dbo.GuestAddresses", "GuestAddressId", "dbo.Guests");
-            DropIndex("dbo.GuestAddresses", new[] { "GuestAddressId" });
-            DropIndex("dbo.Reservations", new[] { "GuestId" });
             CreateTable(
                 "dbo.Clients",
                 c => new
@@ -106,51 +102,10 @@ namespace Reservations.API.Dal.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
-            DropTable("dbo.GuestAddresses");
-            DropTable("dbo.Guests");
-            DropTable("dbo.Reservations");
         }
         
         public override void Down()
         {
-            CreateTable(
-                "dbo.Reservations",
-                c => new
-                    {
-                        ReservationId = c.Int(nullable: false, identity: true),
-                        HotelName = c.String(nullable: false),
-                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        StartDate = c.DateTime(nullable: false),
-                        EndDate = c.DateTime(nullable: false),
-                        GuestId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.ReservationId);
-            
-            CreateTable(
-                "dbo.Guests",
-                c => new
-                    {
-                        GuestId = c.Int(nullable: false, identity: true),
-                        FirstName = c.String(nullable: false),
-                        LastName = c.String(nullable: false),
-                        BirthDate = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.GuestId);
-            
-            CreateTable(
-                "dbo.GuestAddresses",
-                c => new
-                    {
-                        GuestAddressId = c.Int(nullable: false),
-                        Address1 = c.String(nullable: false),
-                        Address2 = c.String(),
-                        City = c.String(nullable: false),
-                        Zipcode = c.Int(nullable: false),
-                        State = c.String(),
-                        Country = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => t.GuestAddressId);
-            
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
@@ -168,10 +123,6 @@ namespace Reservations.API.Dal.Migrations
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.RefreshTokens");
             DropTable("dbo.Clients");
-            CreateIndex("dbo.Reservations", "GuestId");
-            CreateIndex("dbo.GuestAddresses", "GuestAddressId");
-            AddForeignKey("dbo.GuestAddresses", "GuestAddressId", "dbo.Guests", "GuestId");
-            AddForeignKey("dbo.Reservations", "GuestId", "dbo.Guests", "GuestId", cascadeDelete: true);
         }
     }
 }

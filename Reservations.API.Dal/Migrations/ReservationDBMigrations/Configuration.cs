@@ -1,18 +1,19 @@
-namespace Reservations.API.Dal.Migrations
+namespace Reservations.API.Dal.Migrations.ReservationDBMigrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    public sealed class ReservationsAuthDBConfiguration_obsolete : DbMigrationsConfiguration<Reservations.API.AuthContext>
+    public sealed class Configuration : DbMigrationsConfiguration<Reservations.API.Dal.Contexts.ReservationsContext>
     {
-        public ReservationsAuthDBConfiguration_obsolete()
+        public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            MigrationsDirectory = @"Migrations\ReservationDBMigrations";
         }
 
-        protected override void Seed(Reservations.API.AuthContext context)
+        protected override void Seed(Reservations.API.Dal.Contexts.ReservationsContext context)
         {
             //  This method will be called after migrating to the latest version.
 
