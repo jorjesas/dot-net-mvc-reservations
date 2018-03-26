@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,6 +23,8 @@ namespace Reservations.API.Models.Reservations
         [Required]
         public string Country { get; set; }
 
+        [JsonIgnore] 
+        //[IgnoreDataMember]
         public virtual Guest Guest { get; set; }
     }
 }

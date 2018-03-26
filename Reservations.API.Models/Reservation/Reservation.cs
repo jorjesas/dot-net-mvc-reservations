@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace Reservations.API.Models.Reservations
         public DateTime EndDate { get; set; }
 
         public int GuestId { get; set; }
+        [JsonIgnore]
         public Guest Guest { get; set; }
     }
 }

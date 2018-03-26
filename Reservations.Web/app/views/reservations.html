@@ -1,0 +1,44 @@
+﻿
+<div class="row">
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+    <div class="col-md-8">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Reservation ID</th>
+                    <th>Hotel Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Guest ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="reservation in reservations">
+                    <td>
+                        {{ reservation.reservationId }}
+                    </td>
+                    <td>
+                        {{ reservation.hotelName }}
+                    </td>
+                    <td>
+                        {{ reservation.startDate }}
+                    </td>
+                    <td>
+                        {{ reservation.endDate }}
+                    </td>
+                    <td>
+                        {{ reservation.guestId }}
+                    </td>
+                    <!--<td>
+                        <input type="checkbox" data-ng-model="order.isShipped" disabled="disabled">
+                    </td>-->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+</div>

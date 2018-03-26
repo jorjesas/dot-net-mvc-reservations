@@ -14,46 +14,44 @@ using Reservations.API.Models.Reservations;
 
 namespace Reservations.API.Controllers
 {
-    [Authorize]
-    [RoutePrefix("api/Guests")]
-    public class GuestsController : ApiController
+    public class ReservationsController : ApiController
     {
         private ReservationsContext db = new ReservationsContext();
 
-        // GET: api/Guests
-        public IQueryable<Guest> GetGuests()
+        // GET: api/Reservations
+        public IQueryable<Reservation> GetReservations()
         {
-            return db.Guests.Include(g => g.Reservations);
+            return db.Reservations.Include(r => r.Guest);
         }
 
-        // GET: api/Guests/5
-        [ResponseType(typeof(Guest))]
-        public async Task<IHttpActionResult> GetGuest(int id)
+        // GET: api/Reservations/5
+        [ResponseType(typeof(Reservation))]
+        public async Task<IHttpActionResult> GetReservation(int id)
         {
-            Guest guest = await db.Guests.FindAsync(id);
-            if (guest == null)
+            Reservation reservation = await db.Reservations.FindAsync(id);
+            if (reservation == null)
             {
                 return NotFound();
             }
 
-            return Ok(guest);
+            return Ok(reservation);
         }
 
-        // PUT: api/Guests/5
+        // PUT: api/Reservations/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutGuest(int id, Guest guest)
+        public async Task<IHttpActionResult> PutReservation(int id, Reservation reservation)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != guest.GuestId)
+            if (id != reservation.ReservationId)
             {
                 return BadRequest();
             }
 
-            db.Entry(guest).State = EntityState.Modified;
+            db.Entry(reservation).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +59,7 @@ namespace Reservations.API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GuestExists(id))
+                if (!ReservationExists(id))
                 {
                     return NotFound();
                 }
@@ -74,35 +72,35 @@ namespace Reservations.API.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Guests
-        [ResponseType(typeof(Guest))]
-        public async Task<IHttpActionResult> PostGuest(Guest guest)
+        // POST: api/Reservations
+        [ResponseType(typeof(Reservation))]
+        public async Task<IHttpActionResult> PostReservation(Reservation reservation)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Guests.Add(guest);
+            db.Reservations.Add(reservation);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = guest.GuestId }, guest);
+            return CreatedAtRoute("DefaultApi", new { id = reservation.ReservationId }, reservation);
         }
 
-        // DELETE: api/Guests/5
-        [ResponseType(typeof(Guest))]
-        public async Task<IHttpActionResult> DeleteGuest(int id)
+        // DELETE: api/Reservations/5
+        [ResponseType(typeof(Reservation))]
+        public async Task<IHttpActionResult> DeleteReservation(int id)
         {
-            Guest guest = await db.Guests.FindAsync(id);
-            if (guest == null)
+            Reservation reservation = await db.Reservations.FindAsync(id);
+            if (reservation == null)
             {
                 return NotFound();
             }
 
-            db.Guests.Remove(guest);
+            db.Reservations.Remove(reservation);
             await db.SaveChangesAsync();
 
-            return Ok(guest);
+            return Ok(reservation);
         }
 
         protected override void Dispose(bool disposing)
@@ -114,9 +112,9 @@ namespace Reservations.API.Controllers
             base.Dispose(disposing);
         }
 
-        private bool GuestExists(int id)
+        private bool ReservationExists(int id)
         {
-            return db.Guests.Count(e => e.GuestId == id) > 0;
+            return db.Reservations.Count(e => e.ReservationId == id) > 0;
         }
     }
 }
